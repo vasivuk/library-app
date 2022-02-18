@@ -64,11 +64,16 @@ function viewBooks(){
         author.innerText = book.author;
         author.classList.add('author');
         title.innerText = book.title;
-        pages.innerText = book.pages;
+        pages.innerText = book.pages + " pages";
         pages.classList.add('pages');
         const removeBtn = document.createElement('button');
         removeBtn.classList.add('remove-btn');
         removeBtn.innerText = "x";
+
+        removeBtn.addEventListener('click', () => {
+            removeFromLibrary(card.dataset.index);
+            updateLibrary();
+        })
 
         card.appendChild(removeBtn);
         card.appendChild(author);
@@ -84,4 +89,8 @@ viewBooks();
 function updateLibrary(){
     container.innerHTML = "";
     viewBooks();
+}
+
+function removeFromLibrary(index) {
+    myLibrary.splice(index, index+1);
 }

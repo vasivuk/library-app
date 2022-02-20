@@ -1,17 +1,31 @@
+:root {
+    --primary: #5a2222;
+    --secondary: #d3b719;
+    --dark: #202020
+}
+
 * {
     margin: 0;
     padding: 0;
 }
 
 body {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
     height: 100vh;
-    background-color: rgb(32, 32, 32);
+    background-color: #202020;
+}
+
+.wrapper {
+    display: grid;
+    height: inherit;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .card-container {
+    margin: 20px;
     background-color: #504133;
     border: 20px solid #614a35;
     width: min(1020px, 90vw);
@@ -34,7 +48,7 @@ body {
     height: 340px;
     width: 240px;
     background-color: #5a2222;
-    color: rgb(211, 183, 25);
+    color: #d3b719;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -82,12 +96,23 @@ body {
     width: 1.2rem;
 }
 
-body > button {
-    width: 160px;
-    height: 50px;
+.wrapper > button {
+    margin: 20px;
+    padding: 10px 30px;
     align-self: center;
     justify-self: center;
-    margin: 50px;
+
+    font-size: 1.2rem;
+    border-radius: 25px;
+    border: none;
+
+    background-color: var(--primary);
+    color: var(--secondary);
+    cursor: pointer;
+}
+
+.wrapper > button:hover {
+    background-color: #682929;
 }
 
 .new-book-modal {
@@ -106,24 +131,51 @@ body > button {
 }
 
 .modal-content {
-    background-color: rgb(255, 255, 255);
-    margin: 15vh auto;
-    height: 70vh;
+    background-color: var(--primary);
+    color: white;
+    margin: 25vh auto;
+    height: 50vh;
     width: 500px;
     display: grid;
-    align-items: center;
     padding: 20px;
-}
-
-form {
-    display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
-    gap: 20px;
+    column-gap: 20px;
+    row-gap: 10px;
+    position: relative
 }
 
-form > button {
+.modal-content input {
+    background-color: var(--dark);
+    color: white;
+    border: none;
+    padding: 10px;
+}
+
+.modal-content .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px black solid;
+    margin-top: -5px;
+    margin-right: -5px;
+    cursor: pointer;
+}
+
+.radio {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-content > .submit {
     grid-column: 1 / 3;
     width: 200px;
+    height: 50px;
     justify-self: right;
+    background-color: var(--dark);
+    border: none;
+    color: white;
 }

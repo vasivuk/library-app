@@ -8,30 +8,32 @@ body {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
     height: 100vh;
+    background-color: rgb(32, 32, 32);
 }
 
 .card-container {
-    background-color: #614a35;
-    border: 20px solid #382c21;
+    background-color: #504133;
+    border: 20px solid #614a35;
     width: min(1020px, 90vw);
     grid-row: 1;
     grid-column: 1;
     align-self: center;
     justify-self: center;
-    /* display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 240px);
+
+    /* display: flex;
     align-items: center;
     justify-content: left;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
     gap: 20px;
     padding: 20px;
 }
 
 .card {
-    height: 300px;
-    width: 200px;
-    background-color: rgb(90, 34, 34);
+    height: 340px;
+    width: 240px;
+    background-color: #5a2222;
     color: rgb(211, 183, 25);
     display: flex;
     flex-direction: column;
@@ -39,13 +41,36 @@ body {
     align-items: center;
     padding: 20px;
 
+    box-shadow: rgba(0, 0, 0, 0.459) 4px 2px 5px;
+    border-left: 15px solid #5a2222;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    box-sizing: border-box;
+
     position: relative;
+}
+
+.card h1 {
+    text-align: center;
+}
+
+.card::after {
+    content: '';
+    display: block;
+    width: 3px;
+    height: 100%;
+    background-color: #2c200f;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .remove-btn {
     position: absolute;
     right: 0;
     top: 0;
+    margin-top: -5px;
+    margin-right: -5px;
     border: 1px solid black;
     display: flex;
     place-content: center;

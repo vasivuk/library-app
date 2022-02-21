@@ -46,6 +46,10 @@ Book.prototype.addBookToLibrary = function(){
     myLibrary.push(this);
 }
 
+Book.prototype.toggleRead = function() {
+    return (this.isRead) ? false : true;
+}
+
 const addNewBook = function() {
     console.log("yes");
 }
@@ -78,6 +82,15 @@ function viewBooks(){
         removeBtn.addEventListener('click', () => {
             removeFromLibrary(card.dataset.index);
             updateLibrary();
+        })
+
+        card.addEventListener('click', () => {
+            book.isRead = book.toggleRead();
+            if(book.isRead === false) {
+                card.classList.add('read');
+            } else {
+                card.classList.remove('read');
+            }
         })
 
         card.appendChild(removeBtn);

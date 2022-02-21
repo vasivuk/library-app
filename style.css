@@ -179,3 +179,7 @@ body {
     border: none;
     color: white;
 }
+
+.read {
+    outline: 2px solid green;
+}

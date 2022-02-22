@@ -57,15 +57,20 @@ const addNewBook = function() {
 const book1 = new Book('Harry Potter', 'J. K. Rowlings', 500, false)
 const book2 = new Book('Dune', 'Frank Herbert', 412, false);
 const book3 = new Book('Eragon', 'Christopher Paolini', 544, true);
+const book4 = new Book('Demian', 'Herman Hesse', 119, false);
 
 book1.addBookToLibrary();
 book2.addBookToLibrary();
 book3.addBookToLibrary();
+book4.addBookToLibrary();
 
 function viewBooks(){
     for (const book of myLibrary) {
         const card = document.createElement('div');
         card.classList.add('card');
+        if(book.isRead === true) {
+            card.classList.add('read');
+        }
         card.dataset.index = myLibrary.indexOf(book);
         const title = document.createElement('h1');
         const author = document.createElement('p');
@@ -86,7 +91,7 @@ function viewBooks(){
 
         card.addEventListener('click', () => {
             book.isRead = book.toggleRead();
-            if(book.isRead === false) {
+            if(book.isRead === true) {
                 card.classList.add('read');
             } else {
                 card.classList.remove('read');

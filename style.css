@@ -63,7 +63,7 @@ h1 {
     align-items: center;
     padding: 20px;
 
-    box-shadow: rgba(0, 0, 0, 0.459) 4px 2px 5px;
+    box-shadow: #00000075 4px 2px 5px;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
     box-sizing: border-box;
@@ -73,17 +73,17 @@ h1 {
 
 .card.red {
     background-color: var(--red);
-    border-left: 15px solid var(--red);
+    border-left: 13px solid var(--red);
 }
 
 .card.blue {
     background-color: var(--blue);
-    border-left: 15px solid var(--blue);
+    border-left: 13px solid var(--blue);
 }
 
 .card.green {
     background-color: var(--green);
-    border-left: 15px solid var(--green);
+    border-left: 13px solid var(--green);
 }
 
 .card h1 {
@@ -94,9 +94,9 @@ h1 {
 .card::after {
     content: '';
     display: block;
-    width: 3px;
+    width: 5px;
     height: 100%;
-    background-color: #2c200f;
+    background-color: #00000050;
     position: absolute;
     top: 0;
     left: 0;

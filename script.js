@@ -68,6 +68,7 @@ function viewBooks(){
     for (const book of myLibrary) {
         const card = document.createElement('div');
         card.classList.add('card');
+        randomColor(card);
         if(book.isRead === true) {
             card.classList.add('read');
         }
@@ -116,4 +117,19 @@ function updateLibrary(){
 
 function removeFromLibrary(index) {
     myLibrary.splice(index, index+1);
+}
+
+function randomColor(card) {
+    let number = Math.floor(Math.random()*3)+1;
+    switch(number) {
+        case 1:
+            card.classList.add('red');
+            break;
+        case 2:
+            card.classList.add('green');
+            break;
+        case 3:
+            card.classList.add('blue');
+            break;
+    }
 }

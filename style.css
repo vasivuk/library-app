@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@300;500;700&display=swap');
 
 :root {
-    --primary: #5a2222;
+    --red: #5a2222;
+    --blue: #27224e;
+    --green: #2b5233;
     --secondary: #d3b719;
     --dark: #202020;
-    --read: #3c7537;
+    --read: #c5b03a;
     --white: #dbdbcc;
 }
 
@@ -54,7 +56,6 @@ h1 {
 .card {
     height: 340px;
     width: 240px;
-    background-color: #5a2222;
     color: #d3b719;
     display: flex;
     flex-direction: column;
@@ -63,12 +64,26 @@ h1 {
     padding: 20px;
 
     box-shadow: rgba(0, 0, 0, 0.459) 4px 2px 5px;
-    border-left: 15px solid #5a2222;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
     box-sizing: border-box;
 
     position: relative;
+}
+
+.card.red {
+    background-color: var(--red);
+    border-left: 15px solid var(--red);
+}
+
+.card.blue {
+    background-color: var(--blue);
+    border-left: 15px solid var(--blue);
+}
+
+.card.green {
+    background-color: var(--green);
+    border-left: 15px solid var(--green);
 }
 
 .card h1 {
@@ -127,7 +142,7 @@ h1 {
     border-radius: 25px;
     border: none;
 
-    background-color: var(--primary);
+    background-color: var(--red);
     color: var(--white);
     cursor: pointer;
 }
@@ -152,7 +167,7 @@ h1 {
 }
 
 .modal-content {
-    background-color: var(--primary);
+    background-color: var(--red);
     color: var(--white);
     margin: 25vh auto;
     height: 50vh;

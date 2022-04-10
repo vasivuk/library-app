@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
+:root {
+    --red: #5a2222;
+    --blue: #27224e;
+    --green: #2b5233;
+    --secondary: #d3b719;
+    --dark: #202020;
+    --read: #c5b03a;
+    --white: #dbdbcc;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--dark);
+}
+.login-container {
+    background-color: var(--red);
+    padding: 20px;
+    width: 30vw;
+    height: 200px;
+    border-radius: 20px;
+    color: var(--white);
+}
+
+.login-container > form {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    grid-template-rows: auto;
+    gap: 30px;
+    font-size: 1.5rem;
+}
+
+.login-container button {
+    background-color: var(--dark);
+    color: var(--white);
+    grid-column: 1/3;
+    font-size: 1.2rem;
+    border-style: none;
+    padding: 10px 30px;
+    border-radius: 15px;
+    cursor: pointer;
+    width: auto;
+    justify-self: center;
+}
+
+.login-container button:hover {
+    background-color: rgb(53, 53, 53);
+}
+
+input {
+    background-color: var(--dark);
+    color: var(--white);
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+}

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="wrapper">
@@ -16,7 +16,7 @@
             <p>: read</p>
         </div>
         <button class="add-btn">Add a Book</button>
-        
+
         <!-- MODAL CONTENT -->
         <div class="new-book-modal" id="new-book-modal">
             <div class="modal-content">
@@ -33,6 +33,6 @@
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

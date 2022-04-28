@@ -11,10 +11,11 @@ if(isset($_POST["username"]) && isset($_POST["password"])) {
 
     $u = new User(null, $user, $pass, null);
 
-    $response = User::login($u, $conn);
+    $loggedUser = User::login($u, $conn);
 
-    if($response->num_rows==1) {
-        $_SESSION["user_id"] = $user;
+    if($loggedUser->num_rows==1) {
+        $_SESSION["user_id"] = $loggedUser->fetch_array()["userid"];
+        
         header("Location: main.php");
         exit();
     } else {

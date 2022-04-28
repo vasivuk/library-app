@@ -45,6 +45,11 @@ class Book {
     function setPages($pages) {
         $this->pages = $pages;
     }
+
+    public static function getAllUserBooks(mysqli $conn, $id) {
+        $query = "SELECT * FROM userbooks AS b1 INNER JOIN book AS b2 ON(b1.bookid = b2.bookid) WHERE userid=$id";
+        return $conn->query($query);
+    }
 }
 
 ?>

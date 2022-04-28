@@ -1,3 +1,14 @@
+<?php
+require "dbBroker.php";
+require "model/book.php";
+
+session_start();
+$userId = $_SESSION["user_id"];
+
+$books = Book::getAllUserBooks($conn, $userId);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +21,20 @@
 <body>
     <div class="wrapper">
         <h1>Library</h1>
-        <div class="card-container"></div>
+        <div class="card-container">
+        <?php
+            while ($book = $books->fetch_array()) :
+        ?>
+                <div class="card green" data-index="<?php echo $book["bookid"]?>">
+                    <button class="remove-btn">x</button>
+                    <p class="author"><?php echo $book["author"]?></p>
+                    <h1><?php echo $book["title"] ?></h1>
+                    <p class="pages"><?php echo $book["pages"]?> pages</p>
+                </div>
+        <?php 
+            endwhile;
+        ?>
+        </div>
         <div class="legend">
             <div class="box"></div>
             <p>: read</p>
@@ -33,6 +57,6 @@
             </div>
         </div>
     </div>
-    <script src="js/script.js"></script>
+    <!-- <script src="js/script.js"></script> -->
 </body>
 </html>

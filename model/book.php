@@ -6,11 +6,10 @@ class Book {
     private $author;
     private $pages;
 
-    public function __construct($id=null,$username=null,$password=null,$pages=null)
+    public function __construct($title=null,$author=null,$pages=null)
     {
-        $this->bookId = $id;
-        $this->title = $username;
-        $this->author = $password;
+        $this->title = $title;
+        $this->author = $author;
         $this->pages = $pages;
     }
 
@@ -50,6 +49,13 @@ class Book {
         $query = "SELECT * FROM userbooks AS b1 INNER JOIN book AS b2 ON(b1.bookid = b2.bookid) WHERE userid=$id";
         return $conn->query($query);
     }
+
+    public static function add(mysqli $conn, Book $book) {
+        $query = "INSERT INTO book(title, author, pages) VALUES('$book->title', '$book->author', '$book->pages')";
+        Util::writeToConsole($query);
+        return $conn->query($query);
+    }
+
 }
 
 ?>

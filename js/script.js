@@ -19,50 +19,40 @@ closeBtn.addEventListener('click', () => {
     modal.style.display = 'none';
 })
 
-submit.addEventListener('click', () => {
-    let book = new Book(title.value, author.value, pages.value, false);
-    book.addBookToLibrary();
-    modal.style.display = 'none';
-    updateLibrary();
+// submit.addEventListener('click', () => {
+//     let book = new Book(title.value, author.value, pages.value, false);
+//     book.addBookToLibrary();
+//     modal.style.display = 'none';
+//     updateLibrary();
 
-})
+// })
 // addBtn.addEventListener('click', addNewBook);
 
-function Book(title, author, pages, isRead){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
-    this.info = function() {
-        let string =  `${title} by ${author}, ${pages} pages, `;
-        if(isRead === true) {
-            return string.concat("read.");
-        }
-        return string.concat("not read yet.");
-    }
-}
+// function Book(title, author, pages, isRead){
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.isRead = isRead;
+//     this.info = function() {
+//         let string =  `${title} by ${author}, ${pages} pages, `;
+//         if(isRead === true) {
+//             return string.concat("read.");
+//         }
+//         return string.concat("not read yet.");
+//     }
+// }
 
-Book.prototype.addBookToLibrary = function(){
-    myLibrary.push(this);
-}
+// Book.prototype.addBookToLibrary = function(){
+//     myLibrary.push(this);
+// }
 
-Book.prototype.toggleRead = function() {
-    return (this.isRead) ? false : true;
-}
+// Book.prototype.toggleRead = function() {
+//     return (this.isRead) ? false : true;
+// }
 
 const addNewBook = function() {
     console.log("yes");
 }
-
-const book1 = new Book('Harry Potter', 'J. K. Rowlings', 500, false)
-const book2 = new Book('Dune', 'Frank Herbert', 412, false);
-const book3 = new Book('Eragon', 'Christopher Paolini', 544, true);
-const book4 = new Book('Demian', 'Herman Hesse', 119, false);
-
-book1.addBookToLibrary();
-book2.addBookToLibrary();
-book3.addBookToLibrary();
-book4.addBookToLibrary();
 
 function viewBooks(){
     for (const book of myLibrary) {

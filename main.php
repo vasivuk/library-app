@@ -1,12 +1,13 @@
 <?php
+require "util/util.php";
 require "dbBroker.php";
 require "model/book.php";
+require "handler/add.php";
 
 session_start();
 $userId = $_SESSION["user_id"];
 
 $books = Book::getAllUserBooks($conn, $userId);
-
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +44,7 @@ $books = Book::getAllUserBooks($conn, $userId);
 
         <!-- MODAL CONTENT -->
         <div class="new-book-modal" id="new-book-modal">
-            <div class="modal-content">
+            <form class="modal-content" method="post" action="">
                     <button class="close">X</button>
                     <label for="title">Title:</label>
                     <input type="text" name="title" id="title">
@@ -51,12 +52,12 @@ $books = Book::getAllUserBooks($conn, $userId);
                     <input type="text" name="author" id="author">
                     <label for="pages">Pages:</label>
                     <input type="number" name="pages" id="pages">
-                    <div class="radio"><input type="radio" name="read" id="isRead">Read</div>
-                    <div class="radio"><input type="radio" name="read" id="isNotRead">Not read</div>
-                    <button class="submit">Add a Book</button>
-            </div>
+                    <!-- <div class="radio"><input type="radio" name="read" id="isRead">Read</div>
+                    <div class="radio"><input type="radio" name="read" id="isNotRead">Not read</div> -->
+                    <button type="submit" class="submit">Add a Book</button>
+            </form>
         </div>
     </div>
-    <!-- <script src="js/script.js"></script> -->
+    <script src="js/script.js"></script>
 </body>
 </html>

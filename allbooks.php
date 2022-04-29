@@ -3,13 +3,12 @@ require "util/util.php";
 require "dbBroker.php";
 require "model/book.php";
 require "handler/add.php";
-require "handler/delete.php";
 
 session_start();
-global $userId;
 $userId = $_SESSION["user_id"];
 
-$books = Book::getAllUserBooks($conn, $userId);
+$books = Book::getAllBooks($conn, $userId);
+
 
 ?>
 
@@ -25,7 +24,7 @@ $books = Book::getAllUserBooks($conn, $userId);
 <body>
     <div class="wrapper">
         <div class="header">
-            <h1>My Library</h1>
+            <h1>Public Library</h1>
             <div class="logged-user"></div>
         </div>
         <div class="card-container">
@@ -33,17 +32,13 @@ $books = Book::getAllUserBooks($conn, $userId);
             while ($book = $books->fetch_array()) :
         ?>
                 <div class="card green" data-index="<?php echo $book["bookid"]?>">
-                    <form action="" method="post">
-                        <input type="hidden" name="id" value="<?php echo $book["bookid"]?>">
-                        <input type="hidden" name="userid" value="<?php echo $userId?>">
-                        <button class="remove-btn" name="remove-btn" type="submit">x</button>
-                    </form>
+                    <button class="remove-btn">x</button>
                     <p class="author"><?php echo $book["author"]?></p>
                     <h1><?php echo $book["title"] ?></h1>
                     <p class="pages"><?php echo $book["pages"]?> pages</p>
                 </div>
-        <?php 
-            endwhile;
+        <?php
+        endwhile;
         ?>
         </div>
         <!-- <div class="legend">
@@ -52,7 +47,23 @@ $books = Book::getAllUserBooks($conn, $userId);
         </div> -->
         <div class="buttons">
             <button class="add-btn">Add a Book</button>
-            <a href="allbooks.php">Search books</a>
+            <a href="main.php">Back</a>
+        </div>
+
+        <!-- MODAL CONTENT -->
+    <div class="new-book-modal" id="new-book-modal">
+            <form class="modal-content" method="post" action="">
+                    <button class="close">X</button>
+                    <label for="title">Title:</label>
+                    <input type="text" name="title" id="title" required>
+                    <label for="author">Author:</label>
+                    <input type="text" name="author" id="author" required>
+                    <label for="pages">Pages:</label>
+                    <input type="number" name="pages" id="pages" required>
+                    <!-- <div class="radio"><input type="radio" name="read" id="isRead">Read</div>
+                    <div class="radio"><input type="radio" name="read" id="isNotRead">Not read</div> -->
+                    <button type="submit" class="submit" name="submit">Add a Book</button>
+            </form>
         </div>
     </div>
     <script src="js/script.js"></script>

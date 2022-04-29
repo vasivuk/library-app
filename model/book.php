@@ -6,6 +6,7 @@ class Book {
     private $author;
     private $pages;
 
+
     public function __construct($title=null,$author=null,$pages=null)
     {
         $this->title = $title;
@@ -50,9 +51,18 @@ class Book {
         return $conn->query($query);
     }
 
+    public static function getAllBooks(mysqli $conn) {
+        $query = "SELECT * FROM book";
+        return $conn->query($query);
+    }
+
     public static function add(mysqli $conn, Book $book) {
         $query = "INSERT INTO book(title, author, pages) VALUES('$book->title', '$book->author', '$book->pages')";
-        Util::writeToConsole($query);
+        return $conn->query($query);
+    }
+
+    public static function deleteUserBook(mysqli $conn, $bookId, $userId) {
+        $query = "DELETE FROM userbooks WHERE bookid=$bookId AND userid=$userId";
         return $conn->query($query);
     }
 

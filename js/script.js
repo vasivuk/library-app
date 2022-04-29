@@ -3,7 +3,7 @@ let myLibrary = [];
 
 const addBtn = document.querySelector('.add-btn');
 const submit = document.querySelector('.submit');
-const closeBtn = document.querySelector('.close');
+// const closeBtn = document.querySelector('.close');
 
 const title = document.querySelector('#title');
 const author = document.querySelector('#author');
@@ -15,9 +15,9 @@ addButton.addEventListener('click', () => {
     modal.style.display = 'block';
 })
 
-closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-})
+// closeBtn.addEventListener('click', () => {
+//     modal.style.display = 'none';
+// })
 
 // submit.addEventListener('click', () => {
 //     let book = new Book(title.value, author.value, pages.value, false);

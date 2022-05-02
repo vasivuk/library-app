@@ -27,12 +27,13 @@ $books = Book::getAllBooks($conn, $userId);
             <h1>Public Library</h1>
             <div class="logged-user"></div>
         </div>
+        <input type="text" class="search" placeholder="Search a book...">
         <div class="card-container">
         <?php
             while ($book = $books->fetch_array()) :
         ?>
-                <div class="card green" data-index="<?php echo $book["bookid"]?>">
-                    <button class="remove-btn">x</button>
+                <div class="card" data-index="<?php echo $book["bookid"]?>">
+                    <!-- <button class="remove-btn">x</button> -->
                     <p class="author"><?php echo $book["author"]?></p>
                     <h1><?php echo $book["title"] ?></h1>
                     <p class="pages"><?php echo $book["pages"]?> pages</p>
@@ -51,9 +52,10 @@ $books = Book::getAllBooks($conn, $userId);
         </div>
 
         <!-- MODAL CONTENT -->
-    <div class="new-book-modal" id="new-book-modal">
-            <form class="modal-content" method="post" action="">
-                    <button class="close">X</button>
+        <div class="new-book-modal" id="new-book-modal">
+            <div class="modal-content">
+                <button class="close">X</button>
+                <form class="modal-form" method="post" action="">
                     <label for="title">Title:</label>
                     <input type="text" name="title" id="title" required>
                     <label for="author">Author:</label>
@@ -63,7 +65,8 @@ $books = Book::getAllBooks($conn, $userId);
                     <!-- <div class="radio"><input type="radio" name="read" id="isRead">Read</div>
                     <div class="radio"><input type="radio" name="read" id="isNotRead">Not read</div> -->
                     <button type="submit" class="submit" name="submit">Add a Book</button>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
     <script src="js/script.js"></script>

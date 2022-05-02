@@ -43,8 +43,23 @@ class User {
     }
 
     public static function login($user, mysqli $conn) {
-        $query = "SELECT * FROM user WHERE username='$user->username' and password='$user->password'";
-        return $conn->query($query);
+        $q = "SELECT * FROM user WHERE username='$user->username' and password='$user->password'";
+        return $conn->query($q);
+    }
+
+    public static function add(mysqli $conn, $user) {
+        $q = "INSERT INTO user(username, password, email) VALUES ('$user->username', '$user->password', '$user->email')";
+        return $conn->query($q);
+    }
+
+    public static function getAll(mysqli $conn) {
+        $q = "SELECT * FROM user";
+        return $conn->query($q);
+    }
+
+    public static function getByEmail(mysqli $conn, $email) {
+        $q = "SELECT * FROM user WHERE email='$email'";
+        return $conn->query($q);
     }
 }
 

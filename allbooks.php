@@ -1,6 +1,6 @@
 <?php
 require "util/util.php";
-require "dbBroker.php";
+require "conn/dbBroker.php";
 require "model/book.php";
 require "handler/add.php";
 
@@ -81,6 +81,7 @@ $booksArr = $booksInLibrary->fetch_all();
             </div>
         </div>
     </div>
-    <script src="js/script.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/allbooks.js"></script>
 </body>
 </html>

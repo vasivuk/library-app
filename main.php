@@ -1,6 +1,6 @@
 <?php
 require "util/util.php";
-require "dbBroker.php";
+require "conn/dbBroker.php";
 require "model/book.php";
 require "handler/add.php";
 require "handler/delete.php";
@@ -55,6 +55,6 @@ $books = Book::getAllUserBooks($conn, $userId);
             <a href="allbooks.php">Search books</a>
         </div>
     </div>
-    <script src="js/script.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

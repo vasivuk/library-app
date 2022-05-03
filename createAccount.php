@@ -1,7 +1,7 @@
 <?php
 
 require "util/util.php";
-require "dbBroker.php";
+require "conn/dbBroker.php";
 require "model/user.php";
 require "handler/adduser.php";
 

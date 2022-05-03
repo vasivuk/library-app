@@ -32,7 +32,7 @@ $books = Book::getAllUserBooks($conn, $userId);
         <?php
             while ($book = $books->fetch_array()) :
         ?>
-                <div class="card green" data-index="<?php echo $book["bookid"]?>">
+                <div class="card" data-index="<?php echo $book["bookid"]?>">
                     <form action="" method="post">
                         <input type="hidden" name="id" value="<?php echo $book["bookid"]?>">
                         <input type="hidden" name="userid" value="<?php echo $userId?>">

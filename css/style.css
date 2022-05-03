@@ -74,6 +74,7 @@ h1 {
     align-items: center;
     padding: 20px;
 
+    cursor: pointer;
     box-shadow: #00000075 4px 2px 5px;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
@@ -86,6 +87,10 @@ h1 {
     position: absolute;
     top: 0;
     right: 0;
+}
+
+.card.selected {
+    outline: 3px solid var(--read);
 }
 
 .card.red {
@@ -111,6 +116,11 @@ h1 {
 .card.black {
     background-color: var(--black);
     border-left: 13px solid var(--black);
+}
+
+.card.faded {
+    opacity: 50%;
+    cursor: default;
 }
 
 .card h1 {

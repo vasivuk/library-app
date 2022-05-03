@@ -65,7 +65,12 @@ class Book {
         $query = "DELETE FROM userbooks WHERE bookid=$bookId AND userid=$userId";
         return $conn->query($query);
     }
-
+    
+    public static function addToUser(mysqli $conn, $bookId, $userId) {
+        $query = "INSERT INTO userbooks(userid, bookid) VALUES('$userId', '$bookId')";
+        Util::writeToConsole($query);
+        return $conn->query($query);
+    }
 }
 
 ?>

@@ -7,8 +7,10 @@ require "handler/add.php";
 session_start();
 $userId = $_SESSION["user_id"];
 
-$books = Book::getAllBooks($conn, $userId);
+$books = Book::getAllBooks($conn);
+$booksInLibrary = Book::getAllUserBooks($conn, $userId);
 
+$booksArr = $booksInLibrary->fetch_all();
 
 ?>
 
@@ -32,7 +34,16 @@ $books = Book::getAllBooks($conn, $userId);
         <?php
             while ($book = $books->fetch_array()) :
         ?>
-                <div class="card" data-index="<?php echo $book["bookid"]?>">
+                <div class="card" data-index="<?php echo $book["bookid"]?>" data-user="
+                    <?php
+                       foreach($booksArr as $b1) {
+                           if($b1[1] == $book["bookid"]) {
+                               echo 1;
+                               break;
+                           }
+                       }
+                       
+                    ?>">
                     <!-- <button class="remove-btn">x</button> -->
                     <p class="author"><?php echo $book["author"]?></p>
                     <h1><?php echo $book["title"] ?></h1>
@@ -47,7 +58,8 @@ $books = Book::getAllBooks($conn, $userId);
             <p>: read</p>
         </div> -->
         <div class="buttons">
-            <button class="add-btn">Add a Book</button>
+            <button class="add-btn">Add a New Book</button>
+            <button class="add-library-btn">Add Books to Library</button>
             <a href="main.php">Back</a>
         </div>
 

@@ -1,7 +1,11 @@
-const container = document.querySelector('.card-container');
-let myLibrary = [];
+var script = document.createElement('script');
+script.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
+document.getElementsByTagName('head')[0].appendChild(script);
 
+const container = document.querySelector('.card-container');
+let booksToAdd = [];
 const addBtn = document.querySelector('.add-btn');
+const addLibraryBtn = document.querySelector('.add-library-btn');
 const submit = document.querySelector('.submit');
 const closeBtn = document.querySelector('.close');
 
@@ -16,8 +20,10 @@ addButton.addEventListener('click', () => {
 })
 
 const cards = document.querySelectorAll('.card');
-console.log(cards);
 for (const card of cards) {
+    if(card.dataset.user == 1) {
+        card.classList.add('faded')
+    }
     switch(card.dataset.index%5) {
         case 0:
             card.classList.add('red');
@@ -37,10 +43,34 @@ for (const card of cards) {
     }
 }
 
+for (const card of cards) {
+    if(!card.classList.contains("faded")) {
+        card.addEventListener('click', () => {
+            if(!card.classList.contains("selected")) {
+                card.classList.add("selected");
+                addToList(card);
+            } else {
+                card.classList.remove("selected");
+                removeFromList(card);
+            }
+        })
+    }
+
+}
 
 closeBtn.addEventListener('click', () => {
     modal.style.display = 'none';
-    console.log("!!!");
+})
+
+addLibraryBtn.addEventListener('click', () => {
+    $.ajax({
+        url:'handler/addBooks.php',
+        type:'post',
+        data: {booksToAdd : JSON.stringify(booksToAdd)},
+        success:function(response){
+            console.log(response);
+        }
+    })
 })
 
 // submit.addEventListener('click', () => {
@@ -148,6 +178,12 @@ function randomColor(card) {
     }
 }
 
-function setBookColors(books) {
+function addToList(book) {
+    booksToAdd.push(book.dataset.index);
+}
 
+function removeFromList(book) {
+    if(booksToAdd.includes(book.dataset.index)) {
+        booksToAdd.splice(booksToAdd.indexOf(book.dataset.index), 1);
+    }
 }

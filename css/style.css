@@ -188,6 +188,7 @@ h1 {
 }
 
 .buttons a {
+    display: inline-block;
     text-decoration: none;
     margin: 20px;
     padding: 10px 30px;

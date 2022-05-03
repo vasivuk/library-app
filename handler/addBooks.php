@@ -8,7 +8,7 @@ if (isset($_POST['booksToAdd'])) {
     $bookArray =  json_decode(stripslashes($booksToAdd), true);
     foreach($bookArray as $bookId) {
         echo $bookId;
-        $status = Book::addToUser($conn, $bookId, 1);
+        $status = Book::addToUser($conn, $bookId, $_SESSION["userid"]);
         if($status) {
             Util::writeToConsole("Book added successfully.");
         } else {

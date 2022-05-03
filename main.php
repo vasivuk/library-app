@@ -6,7 +6,7 @@ require "handler/add.php";
 require "handler/delete.php";
 
 session_start();
-global $userId;
+
 $userId = $_SESSION["user_id"];
 
 $books = Book::getAllUserBooks($conn, $userId);
@@ -25,7 +25,7 @@ $books = Book::getAllUserBooks($conn, $userId);
 <body>
     <div class="wrapper">
         <div class="header">
-            <h1>My Library</h1>
+            <h1><?php echo $_SESSION["username"]?>'s Library</h1>
             <div class="logged-user"></div>
         </div>
         <div class="card-container">
@@ -51,7 +51,6 @@ $books = Book::getAllUserBooks($conn, $userId);
             <p>: read</p>
         </div> -->
         <div class="buttons">
-            <button class="add-btn">Add a Book</button>
             <a href="allbooks.php">Search books</a>
         </div>
     </div>

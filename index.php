@@ -16,7 +16,9 @@ if(isset($_POST["username"]) && isset($_POST["password"])) {
     $loggedUser = User::login($u, $conn);
 
     if($loggedUser->num_rows==1) {
-        $_SESSION["user_id"] = $loggedUser->fetch_array()["userid"];
+        $lu = $loggedUser->fetch_array();
+        $_SESSION["user_id"] = $lu["userid"];
+        $_SESSION["username"] = $lu["username"];
         
         header("Location: main.php");
         exit();

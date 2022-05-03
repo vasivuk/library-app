@@ -13,7 +13,7 @@ addLibraryBtn.addEventListener('click', () => {
         type:'post',
         data: {booksToAdd : JSON.stringify(booksToAdd)},
         success:function(response){
-            console.log(response);
+            document.location.reload();
         }
     })
 })

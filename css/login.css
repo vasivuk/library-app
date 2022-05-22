@@ -58,3 +58,12 @@ input {
     padding: 10px;
     border-radius: 10px;
 }
+
+a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #2856fa;
+}

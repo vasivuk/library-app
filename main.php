@@ -1,6 +1,6 @@
 <?php
 require "util/util.php";
-require "conn/dbBroker.php";
+require "connection/dbBroker.php";
 require "model/book.php";
 require "handler/add.php";
 require "handler/delete.php";
@@ -21,8 +21,13 @@ $books = Book::getAllUserBooks($conn, $userId);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="css/style.css">
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
 </head>
 <body>
+    
     <div class="wrapper">
         <div class="header">
             <h1><?php echo $_SESSION["username"]?>'s Library</h1>
@@ -42,14 +47,11 @@ $books = Book::getAllUserBooks($conn, $userId);
                     <h1><?php echo $book["title"] ?></h1>
                     <p class="pages"><?php echo $book["pages"]?> pages</p>
                 </div>
-        <?php 
+        <?php
             endwhile;
         ?>
         </div>
-        <!-- <div class="legend">
-            <div class="box"></div>
-            <p>: read</p>
-        </div> -->
+
         <div class="buttons">
             <a href="allbooks.php">Search books</a>
         </div>

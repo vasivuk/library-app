@@ -1,13 +1,13 @@
 <?php
 
 require "util/util.php";
-require "conn/dbBroker.php";
+require "connection/dbBroker.php";
 require "model/user.php";
 require "handler/adduser.php";
 
 session_start();
 
-if(isset($_POST["username"]) && isset($_POST["password"])) {
+if (isset($_POST["username"]) && isset($_POST["password"])) {
     $user = $_POST["username"];
     $pass = $_POST["password"];
 
@@ -15,7 +15,7 @@ if(isset($_POST["username"]) && isset($_POST["password"])) {
 
     $loggedUser = User::login($u, $conn);
 
-    if($loggedUser->num_rows==1) {
+    if ($loggedUser->num_rows==1) {
         $lu = $loggedUser->fetch_array();
         $_SESSION["user_id"] = $lu["userid"];
         $_SESSION["username"] = $lu["username"];
@@ -23,7 +23,6 @@ if(isset($_POST["username"]) && isset($_POST["password"])) {
         header("Location: main.php");
         exit();
     } else {
-
     }
 }
 ?>
@@ -37,6 +36,10 @@ if(isset($_POST["username"]) && isset($_POST["password"])) {
     <title>Library</title>
     <link rel="stylesheet" href="css/login.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
 </head>
 <body>
 <body>
@@ -47,6 +50,7 @@ if(isset($_POST["username"]) && isset($_POST["password"])) {
                 type="text"
                 name="username"
                 id="username"
+                
             >
 
             <label for="password">Password:</label>
@@ -58,7 +62,7 @@ if(isset($_POST["username"]) && isset($_POST["password"])) {
 
             <button type="">Login</button>
         </form>
-        <a href="createAccount.php">Create Account</a>
+        <a href="createAccount.php">Create Account?</a>
     </div>
 </body>
 </html>
